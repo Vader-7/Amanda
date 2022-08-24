@@ -14,7 +14,6 @@ def comandos(p_cadena):
         # arduino.write(p_cadena.encode("ascii"))
         return 1
     else:
-        
         SpeakText(p_cadena)
         nose.append(p_cadena)
         # arduino.write(p_cadena.encode("ascii"))
