@@ -1,10 +1,23 @@
 import speech_recognition as sr
 import pyttsx3
-import serial
+
+# import serial
 
 listener = sr.Recognizer()
-arduino = serial.Serial("/dev/cu.usbmodem1201", 9600)
+# arduino = serial.Serial("/dev/cu.usbmodem1301", 9600)
 switch = 0
+
+
+def comandos(p_cadena):
+    if "APAGAR" in p_cadena:
+        SpeakText("ADIÓS, UN GUSTO")
+        # arduino.write(p_cadena.encode("ascii"))
+        return 1
+    elif "HOLA" in p_cadena:
+        SpeakText("HOLA, SE ENCUENTRA DON CARLOS?")
+        # arduino.write(p_cadena.encode("ascii"))
+    else:
+        SpeakText("DIJISTE." + p_cadena)
 
 
 def SpeakText(command):
@@ -22,11 +35,7 @@ while switch != 1:
             audio = listener.listen(source, phrase_time_limit=3)
             cadena = listener.recognize_google(audio, language='es-MX')
             cadena = cadena.upper()
-            if "APAGAR" in cadena:
-                print("ADIÓS, UN GUSTO.")
-                switch = 1
-            else:
-                arduino.write(cadena.encode("ascii"))
-                print("DIJISTE.\t" + cadena)
+            print("DIJISTE..." + cadena)
+            switch = comandos(cadena)
         except:
             print("NO ENTENDI, REPITE LA PALABRA POR FAVOR.")
