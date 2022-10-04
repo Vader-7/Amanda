@@ -43,6 +43,8 @@ void loop() {
       inicial();
     }
     if (valor=="CINCO" or valor == "5"){
+      mov_cero();
+      delay(1000);
       mov_cinco();
       delay(30);
       inicial();
@@ -76,33 +78,58 @@ void inicial() {
   m4.write(0);
   m5.write(0);
 }
-void mov_uno() {
-  m1.write(180);
-  m2.write(180);
+void mov_cero(){
+  m1.write(150);
+  delay(100);
+  m2.write(150);
+  delay(100);
   m3.write(150);
-  m4.write(0);
-  m5.write(180);
+  delay(100);
+  m4.write(150);
+  delay(100);
+  m5.write(100);
+  delay(100);
+}
+void mov_uno() {
+  m1.write(0);
+  delay(100);
+  m2.write(150);
+  delay(100);
+  m3.write(150);
+  delay(100);
+  m4.write(150);
+  delay(100);
+  m5.write(100);
+  delay(100);
 }
 void mov_dos() {
-  m1.write(180);
-  m2.write(180);
-  m3.write(0);
-  m4.write(0);
-  m5.write(180);
+  m1.write(0);
+  m2.write(0);
+  delay(100);
+  m3.write(150);
+  delay(100);
+  m4.write(150);
+  delay(100);
+  m5.write(100);
+  delay(100);
 }
 void mov_tres() {
-  m1.write(180);
+  m1.write(0);
   m2.write(0);
   m3.write(0);
   m4.write(0);
-  m5.write(180);
+  delay(100);
+  m5.write(100);
+  delay(100);
 }
 void mov_cuatro() {
-  m1.write(180);
+  m1.write(0);
   m2.write(0);
   m3.write(0);
   m4.write(0);
-  m5.write(180);
+  delay(100);
+  m5.write(100);
+  delay(100);
 }
 void mov_cinco() {
   m1.write(0);
@@ -110,6 +137,7 @@ void mov_cinco() {
   m3.write(0);
   m4.write(0);
   m5.write(0);
+  delay(100);
 }
 void mov_seis() {
   m1.write(180);
