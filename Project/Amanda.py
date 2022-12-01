@@ -3,7 +3,7 @@ import pyttsx3
 import serial
 
 listener = sr.Recognizer()
-arduino = serial.Serial("/dev/cu.usbmodem1201", 9600)
+# arduino = serial.Serial("/dev/cu.usbmodem1201", 9600)
 switch = 0
 
 
@@ -25,8 +25,19 @@ while switch != 1:
             if "APAGAR" in cadena:
                 print("ADIÓS, UN GUSTO.")
                 switch = 1
+            if "HOLA" in cadena:
+                SpeakText("Hola, como estas?, mi nombre es Amanda")
+            if "CÓMO ESTÁS" in cadena:
+                SpeakText("Muy bien, gracias por preguntar")
+            if "CÓMO TE LLAMAS" in cadena:
+                SpeakText("Me llamo Amanda")
+            if "QUÉ HACES" in cadena:
+                SpeakText("Soy un interprete de lengua de señas, y estoy aquí para ayudarte")
+            if "QUÉ ES UNA LENGUA DE SEÑAS" in cadena:
+                SpeakText("Una lengua de señas es un sistema de comunicación que utiliza la mano y los movimientos "
+                          "del cuerpo para expresar ideas, sentimientos y pensamientos")
             else:
-                arduino.write(cadena.encode("ascii"))
+                # arduino.write(cadena.encode("ascii"))
                 print("DIJISTE.\t" + cadena)
         except:
             print("NO ENTENDI, REPITE LA PALABRA POR FAVOR.")
