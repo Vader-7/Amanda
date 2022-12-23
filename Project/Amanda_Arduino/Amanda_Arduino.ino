@@ -1,169 +1,210 @@
 #include <Servo.h>
 
-Servo m1;
-Servo m2;
-Servo m3;
-Servo m4;
-Servo m5;
+// Define constants for the servo pin numbers
+const int SERVO_1_PIN = 1;
+const int SERVO_2_PIN = 2;
+const int SERVO_3_PIN = 3;
+const int SERVO_4_PIN = 4;
+const int SERVO_5_PIN = 5;
+
+// Create servo objects
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+Servo servo5;
 
 String valor;
 
 void setup() {
   Serial.begin(9600);
-  delay(20);  
-  m1.attach(1);
-  m2.attach(2);
-  m3.attach(3);
-  m4.attach(4);
-  m5.attach(5);
-  inicial();
+  delay(20);
+  servo1.attach(SERVO_1_PIN);
+  servo2.attach(SERVO_2_PIN);
+  servo3.attach(SERVO_3_PIN);
+  servo4.attach(SERVO_4_PIN);
+  servo5.attach(SERVO_5_PIN);
+  moveToInitialPosition();
 }
 
 void loop() {
   if (Serial.available()){
     valor = Serial.readString();
-    if (valor=="UNO" or valor == "1"){
-      mov_uno();
-      delay(2000);
-      inicial();
+    // Handle the different commands
+    switch (valor) {
+      case "UNO":
+      case "1":
+        moveOne();
+        delay(2000);
+        moveToInitialPosition();
+        break;
+      case "DOS":
+      case "2":
+        moveTwo();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "TRES":
+      case "3":
+        moveThree();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "CUATRO":
+      case "4":
+        moveFour();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "CINCO":
+      case "5":
+        moveToInitialPosition();
+        delay(1000);
+        moveFive();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "SEIS":
+      case "6":
+        moveSix();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "SIETE":
+      case "7":
+        moveSeven();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "OCHO":
+      case "8":
+        moveEight();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      case "NUEVE":
+      case "9":
+        moveNine();
+        delay(30);
+        moveToInitialPosition();
+        break;
+      default:
+        // Handle unrecognized input
+        break;
     }
-    if (valor=="DOS" or valor == "2"){
-      mov_dos();
-      delay(30);
-      inicial();
-    }
-    if (valor=="TRES" or valor == "3"){
-      mov_tres();
-      delay(30);
-      inicial();
-    }
-    if (valor=="CUATRO" or valor == "4"){
-      mov_cuatro();
-      delay(30);
-      inicial();
-    }
-    if (valor=="CINCO" or valor == "5"){
-      mov_cero();
-      delay(1000);
-      mov_cinco();
-      delay(30);
-      inicial();
-    }
-    if (valor=="SEIS" or valor == "6"){
-      mov_seis();
-      delay(30);
-      inicial();
-    }
-    if (valor=="SIETE" or valor == "7"){
-      mov_siete();
-      delay(30);
-      inicial();
-    }
-    if (valor=="OCHO" or valor == "8"){
-      mov_ocho();
-      delay(30);
-      inicial();
-    }
-    if (valor=="NUEVE" or valor == "9"){
-      mov_nueve();
-      delay(30);
-      inicial();
-    }                      
   }
 }
-void inicial() {
-  m1.write(0);
-  m2.write(0);
-  m3.write(0);
-  m4.write(0);
-  m5.write(0);
+
+// Define functions for each movement
+void moveToInitialPosition() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  servo5.write(0);
 }
-void mov_cero(){
-  m1.write(150);
+
+void moveOne() {
+  servo1.write(0);
   delay(100);
-  m2.write(150);
+  servo2.write(150);
   delay(100);
-  m3.write(150);
+  servo3.write(150);
   delay(100);
-  m4.write(150);
+  servo4.write(150);
   delay(100);
-  m5.write(100);
-  delay(100);
-}
-void mov_uno() {
-  m1.write(0);
-  delay(100);
-  m2.write(150);
-  delay(100);
-  m3.write(150);
-  delay(100);
-  m4.write(150);
-  delay(100);
-  m5.write(100);
+  servo5.write(100);
   delay(100);
 }
-void mov_dos() {
-  m1.write(0);
-  m2.write(0);
+
+void moveTwo() {
+  servo1.write(0);
+  servo2.write(0);
   delay(100);
-  m3.write(150);
+  servo3.write(150);
   delay(100);
-  m4.write(150);
+  servo4.write(150);
   delay(100);
-  m5.write(100);
-  delay(100);
-}
-void mov_tres() {
-  m1.write(0);
-  m2.write(0);
-  m3.write(0);
-  m4.write(0);
-  delay(100);
-  m5.write(100);
+  servo5.write(100);
   delay(100);
 }
-void mov_cuatro() {
-  m1.write(0);
-  m2.write(0);
-  m3.write(0);
-  m4.write(0);
+
+void moveThree() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
   delay(100);
-  m5.write(100);
-  delay(100);
-}
-void mov_cinco() {
-  m1.write(0);
-  m2.write(0);
-  m3.write(0);
-  m4.write(0);
-  m5.write(0);
+  servo5.write(100);
   delay(100);
 }
-void mov_seis() {
-  m1.write(180);
-  m2.write(180);
-  m3.write(180);
-  m4.write(180);
-  m5.write(0);
+
+void moveFour() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  delay(100);
+  servo5.write(100);
+  delay(100);
 }
-void mov_siete() {
-  m1.write(180);
-  m2.write(180);
-  m3.write(180);
-  m4.write(0);
-  m5.write(0);
+
+void moveFive() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  delay(100);
+  servo5.write(100);
+  delay(100);
 }
-void mov_ocho() {
-  m1.write(180);
-  m2.write(0);
-  m3.write(0);
-  m4.write(0);
-  m5.write(0);
+
+void moveSix() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  delay(100);
+  servo5.write(100);
+  delay(100);
 }
-void mov_nueve() {
-  m1.write(180);
-  m2.write(0);
-  m3.write(0);
-  m4.write(0);
-  m5.write(0);
+
+void moveSeven() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  delay(100);
+  servo5.write(100);
+  delay(100);
 }
+
+void moveEight() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  delay(100);
+  servo5.write(100);
+  delay(100);
+}
+
+void moveNine() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  delay(100);
+  servo5.write(100);
+  delay(100);
+}
+
+// Define functions for each movement
+void moveToInitialPosition() {
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  servo5.write(0);
+}
+
