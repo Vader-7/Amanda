@@ -16,6 +16,7 @@
 </h1>
 <p align="start">
     <samp>
-        MIT License[LICENSE]
+    
+[MIT License](LICENSE)
     </samp>
 </p>
