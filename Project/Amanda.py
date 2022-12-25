@@ -10,6 +10,7 @@ engine = pyttsx3.init()
 commands = {
     "apagar": "exit",
     "hola": "greet",
+    "quién te creó": "who_is_your_creator",
     "cómo estás": "ask_how_are_you",
     "cómo te llamas": "ask_name",
     "qué haces": "ask_what_are_you",
@@ -20,6 +21,10 @@ commands = {
 }
 
 
+
+def who_is_your_creator():
+    engine.say("Mi creador es Tyler Miranda Hayashi")
+    engine.runAndWait()
 # Define the actions for each command
 def greet():
     engine.say("Hola, como estas?, mi nombre es Amanda")
